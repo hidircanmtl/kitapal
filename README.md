@@ -67,6 +67,7 @@ Sipariş Verme
 *   Dikkat edilmesi gereken husus `.json` dosyasındaki verilerin şu anda sistemde bulunan format göre yapılmış olmasıdır.
 *   Eğer eklenen ürünlerin id numaralarında çakışma durum olursa o ürünün eklemesi yapılmayacaktır.
 *   Eklenen ürünlerin listesi bu sayfada listelenir ve istediğiniz zama ürünün slime işlemini yapabilirsiniz.
+*   Eklenen ürünlerin fiyatını, stok durmunu, ismini bu sayfadan değiştirebilirsiniz.
 
 4\. Siparişler
 
