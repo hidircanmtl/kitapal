@@ -114,5 +114,38 @@ if ($_GET['usersil'] == "ok") {
 
 //==============================================================================
 
+if (isset($_POST['productupdate'])) {
+    $product_id = $_POST['product_id'];
+    $title = $_POST['title'];
+    $author = $_POST['author'];
+    $list_price = $_POST['list_price'];
+    $stock_quantity = $_POST['stock_quantity'];
+
+    $kaydet = $db->prepare("UPDATE products SET
+        title = :title,
+        author = :author,
+        list_price = :list_price,
+        stock_quantity = :stock_quantity
+        WHERE product_id = :product_id
+    ");
+
+    $update = $kaydet->execute(array(
+        'title' => $title,
+        'author' => $author,
+        'list_price' => $list_price,
+        'stock_quantity' => $stock_quantity,
+        'product_id' => $product_id
+    ));
+
+    if ($update) {
+        header("Location: ../production/products.php?durum=ok");
+    } else {
+        header("Location: ../production/products.php?durum=no");
+    }
+}
+
+
+
+
 
 
