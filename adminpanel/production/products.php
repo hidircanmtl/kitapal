@@ -46,20 +46,32 @@ require_once 'header.php';
                 $urunsor->execute();
                 while ($uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)) {
                     ?>
+                <form method="post" action="../utilities/operations.php">
                     <tr>
-                        <th scope="row">#<?php echo $uruncek['product_id'] ?></th>
-                        <td><?php echo $uruncek['title'] ?></td>
-                        <td><?php echo $uruncek['author'] ?></td>
+                        <th scope="row">#<?php echo $uruncek['product_id'] ?>
+                            <input name="product_id" type="hidden" value="<?php echo $uruncek['product_id'] ?>">
+                        </th>
+                        <td><input type="text" class="form-control" name="title" value="<?php echo $uruncek['title'] ?>"></td>
+                        <td><input type="text" class="form-control" name="author" value="<?php echo $uruncek['author'] ?>"></td>
                         <td><?php echo $uruncek['category_title'] ?></td>
-                        <td><?php echo number_format($uruncek['list_price'], 2) ?> ₺</td>
-                        <td><?php echo $uruncek['stock_quantity'] ?></td>
+                        <td>
+                            <div class="input-group">
+                                <input name="list_price" type="number" value="<?php echo number_format($uruncek['list_price'], 2) ?>" class="form-control">
+                                <span class="input-group-text" id="basic-addon2">₺</span>
+                            </div>
+                        </td>
+                        <td><input type="text" class="form-control" name="stock_quantity" value="<?php echo $uruncek['stock_quantity'] ?>"></td>
                         <td>
                             <a href="../utilities/operations.php?product_id=<?php echo $uruncek['product_id']; ?>&urunsil=ok"
                                class="btn btn-danger">
                                 <i class="bi bi-trash"></i>
                             </a>
                         </td>
+                        <td>
+                            <button class="btn btn-secondary" type="submit" name="productupdate">Güncelle</button>
+                        </td>
                     </tr>
+                </form>
                     <?php
                 }
                 ?>
